@@ -1,5 +1,8 @@
+import 'units.dart';
+
 class Strings {
   static const String unit_cm = "cm";
+
   static TextFieldStrings get heightFieldStrings => TextFieldStrings(
         label: "Enter your height",
         emptyError: "Enter height",
@@ -10,6 +13,17 @@ class Strings {
         emptyError: "Enter weight",
         rangeError: "Enter weight between 1 and 300",
       );
+
+  static var unitsMap = {
+    Units.metric: UnitsStrings(
+      height: "cm",
+      weight: "kg",
+    ),
+    Units.imperial: UnitsStrings(
+      height: "in",
+      weight: "oz",
+    )
+  };
 }
 
 class TextFieldStrings {
@@ -21,5 +35,15 @@ class TextFieldStrings {
     this.label,
     this.emptyError,
     this.rangeError,
+  });
+}
+
+class UnitsStrings {
+  final String height;
+  final String weight;
+
+  UnitsStrings({
+    this.height,
+    this.weight,
   });
 }

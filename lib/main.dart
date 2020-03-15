@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:bmi_app/bmi_form.dart';
 import 'package:bmi_app/bmi_record.dart';
 import 'package:flutter/material.dart';
+
+import 'units.dart';
 
 void main() => runApp(BMIApp());
 
@@ -26,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   BMIRecord bmiRecord = BMIRecord();
+  Units units = Units.metric;
 
   void _calculateBMI() {
     setState(() {
@@ -45,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BMIForm(
             bmiRecord: bmiRecord,
             calculateBMI: _calculateBMI,
+            units: units,
           ),
           Container(
             width: double.infinity,

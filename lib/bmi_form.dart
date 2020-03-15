@@ -3,13 +3,19 @@ import 'package:bmi_app/bmi_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 import 'strings.dart';
+import 'units.dart';
 
 class BMIForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final BMIRecord bmiRecord;
   final Function calculateBMI;
+  final Units units;
 
-  BMIForm({this.bmiRecord, this.calculateBMI});
+  BMIForm({
+    @required this.bmiRecord,
+    @required this.calculateBMI,
+    @required this.units,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +32,7 @@ class BMIForm extends StatelessWidget {
               updateField: (double val) {
                 bmiRecord.height = val;
               },
+              units: Strings.unitsMap[units].height,
             ),
             BMITextFormField(
               bmiRecord: bmiRecord,
@@ -34,6 +41,7 @@ class BMIForm extends StatelessWidget {
               updateField: (double val) {
                 bmiRecord.weight = val;
               },
+              units: Strings.unitsMap[units].weight,
             ),
             Container(
               padding: EdgeInsets.only(top: 15),
