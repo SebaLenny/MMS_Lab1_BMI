@@ -1,5 +1,6 @@
+import 'package:bmi_app/bmi_form.dart';
+import 'package:bmi_app/bmi_record.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 void main() => runApp(BMIApp());
 
@@ -24,14 +25,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _formKey = GlobalKey<FormState>();
-  int bmi;
-  double weight;
-  double height;
+  BMIRecord bmiRecord = BMIRecord();
 
   void _calculateBMI() {
     setState(() {
-      bmi = (weight / (height * height)).floor();
+
     });
   }
 
@@ -44,78 +42,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Form(
-            key: _formKey,
-            child: Container(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    decoration: new InputDecoration(
-                      labelText: "Enter your weight [kg]",
-                    ),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      WhitelistingTextInputFormatter.digitsOnly
-                    ],
-                    onSaved: (String value) {
-                      if(_formKey.currentState.validate())
-                        weight = double.tryParse(value);
-                    },
-                    validator: (String value) {
-                      double parsed = double.tryParse(value);
-                      if (parsed == null) {
-                        return 'Enter weight';
-                      } else if (parsed <= 0 || parsed > 300) {
-                        return 'Enter weight between 1 and 300';
-                      }
-                      return null;
-                    },
-                  ),
-                  TextFormField(
-                    decoration: new InputDecoration(
-                      labelText: "Enter your height [cm]",
-                    ),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      WhitelistingTextInputFormatter.digitsOnly
-                    ],
-                    onSaved: (String value) {
-                      if(_formKey.currentState.validate())
-                        height = double.tryParse(value) * 0.01;
-                    },
-                    validator: (String value) {
-                      double parsed = double.tryParse(value);
-                      if (parsed == null) {
-                        return 'Enter height';
-                      } else if (parsed <= 0 || parsed > 300) {
-                        return 'Enter height between 1 and 300';
-                      }
-                      return null;
-                    },
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 15),
-                    width: double.infinity,
-                    child: RaisedButton(
-                      onPressed: () {
-                        _formKey.currentState.save();
-                        if (_formKey.currentState.validate()) {
-                          _calculateBMI();
-                        }
-                      },
-                      child: Text("Calculate"),
-                    ),
-                  )
-                ],
-              ),
-            ),
+          BMIForm(
+            bmiRecord: bmiRecord,
+            calculateBMI: _calculateBMI,
           ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.only(top: 50),
             alignment: Alignment.center,
-            child: Text(bmi.toString()),
+            child: Text(bmiRecord.bmi.toString()),
           ),
         ],
       ),
