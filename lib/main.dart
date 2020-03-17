@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bmi_app/bmi_form.dart';
 import 'package:bmi_app/bmi_record.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Units units = Units.metric;
 
   void _calculateBMI() {
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override

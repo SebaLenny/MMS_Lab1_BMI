@@ -2,9 +2,7 @@ import 'package:bmi_app/bmi_record.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'helpers.dart';
 import 'strings.dart';
-import 'units.dart';
 
 class BMITextFormField extends StatelessWidget {
   final BMIRecord bmiRecord;
@@ -33,7 +31,7 @@ class BMITextFormField extends StatelessWidget {
       ],
       onSaved: (String value) {
         if (formKey.currentState.validate())
-          updateField(Helpers.toMeter(double.tryParse(value)));
+          updateField(double.tryParse(value));
       },
       validator: (String value) {
         double parsed = double.tryParse(value);
