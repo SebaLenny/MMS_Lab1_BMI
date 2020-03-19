@@ -10,6 +10,7 @@ class BMITextFormField extends StatelessWidget {
   final TextFieldStrings strings;
   final Function updateField;
   final String units;
+  final double initValue;
 
   BMITextFormField({
     @required this.bmiRecord,
@@ -17,6 +18,7 @@ class BMITextFormField extends StatelessWidget {
     @required this.strings,
     @required this.updateField,
     @required this.units,
+    @required this.initValue,
   });
 
   @override
@@ -42,6 +44,7 @@ class BMITextFormField extends StatelessWidget {
         }
         return null;
       },
+      initialValue: initValue != null ?  initValue.floor().toString() : '',
     );
   }
 }

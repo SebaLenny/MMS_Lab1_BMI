@@ -33,6 +33,7 @@ class BMIForm extends StatelessWidget {
                 bmiRecord.height = val;
               },
               units: Strings.unitsMap[units].height,
+              initValue: bmiRecord.height,
             ),
             BMITextFormField(
               bmiRecord: bmiRecord,
@@ -42,6 +43,7 @@ class BMIForm extends StatelessWidget {
                 bmiRecord.weight = val;
               },
               units: Strings.unitsMap[units].weight,
+              initValue: bmiRecord.weight,
             ),
             Container(
               padding: EdgeInsets.only(top: 15),
