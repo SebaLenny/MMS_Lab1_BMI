@@ -25,7 +25,7 @@ class Result extends StatefulWidget {
 class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
   int _resut = 0;
   AnimationController _controller;
-  Animation<double> animation;
+  Animation<double> numberAnimation;
   var _curvedAnimation;
 
   @override
@@ -44,6 +44,11 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
     _setupAnimation();
   }
 
+  Color getProperColour() {
+    return Color.lerp(
+        Colors.green, Colors.red, (numberAnimation.value - 18.5) / 11.5);
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -52,7 +57,7 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return animation.value.floor() != 0
+    return numberAnimation.value.floor() != 0
         ? GestureDetector(
             onTap: () {
               widget._viewController.goToView(CurrentView.explanation);
@@ -70,11 +75,11 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
                 Container(
                   padding: EdgeInsets.all(Dimens.standardDistance),
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: getProperColour(),
                     shape: BoxShape.circle,
                   ),
                   child: Text(
-                    animation.value.floor().toString(),
+                    numberAnimation.value.floor().toString(),
                     style: TextStyle(
                         fontStyle: FontStyle.italic,
                         fontSize: Dimens.fontHuge,
@@ -96,7 +101,7 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
   }
 
   void _setupAnimation() {
-    animation = Tween<double>(
+    numberAnimation = Tween<double>(
       begin: 0,
       end: _resut.toDouble(),
     ).animate(_curvedAnimation)
