@@ -3,7 +3,9 @@ import 'package:bmi_app/Utility/dimens.dart';
 import 'package:bmi_app/view_controller.dart';
 import 'package:flutter/material.dart';
 
+import 'Utility/helpers.dart';
 import 'Utility/strings.dart';
+import 'dart:math' as math;
 
 class Result extends StatefulWidget {
   _ResultState _resultState;
@@ -33,7 +35,7 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
     );
 
     _curvedAnimation = CurvedAnimation(
@@ -45,8 +47,9 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
   }
 
   Color getProperColour() {
-    return Color.lerp(
-        Colors.green, Colors.red, (numberAnimation.value - 18.5) / 11.5);
+    var value = Helpers.map(numberAnimation.value, 18.5, 28, 150, 0).clamp(0, 360).toDouble();
+    print(value);
+    return HSVColor.fromAHSV(1, value, 1, 0.8).toColor();
   }
 
   @override
