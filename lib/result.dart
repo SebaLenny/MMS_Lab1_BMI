@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Utility/strings.dart';
+
 class Result extends StatefulWidget {
   _ResultState _resultState;
 
@@ -45,10 +47,40 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      animation.value.floor().toString(),
-      style: TextStyle(fontStyle: FontStyle.italic, fontSize: 80),
-    );
+    return animation.value.floor() != 0
+        ? Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(bottom: 15),
+                child: Text(
+                  Strings.bmiHeadline,
+                  style: TextStyle(fontSize: 40, color: Colors.blue),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  shape: BoxShape.circle,
+                ),
+                child: Text(
+                  animation.value.floor().toString(),
+                  style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 80,
+                      color: Colors.white),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 15),
+                child: Text(
+                  Strings.bmiBottomline,
+                  style: TextStyle(fontSize: 20, color: Colors.blue),
+                ),
+              )
+            ],
+          )
+        : Container();
   }
 
   void _setupAnimation() {

@@ -1,3 +1,5 @@
+import 'package:bmi_app/Utility/current_view.dart';
+import 'package:bmi_app/view_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'Unit/unit_controller.dart';
@@ -7,8 +9,9 @@ import 'Utility/strings.dart';
 class MenuDrawer extends StatefulWidget {
   UnitController unitController;
   Function refresh;
+  ViewController viewController;
 
-  MenuDrawer(this.unitController, this.refresh);
+  MenuDrawer(this.unitController, this.refresh, this.viewController);
 
   @override
   _MenuDrawerState createState() => _MenuDrawerState();
@@ -54,6 +57,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
         ListTile(
           title: Text(Strings.appAuthor),
           trailing: Icon(Icons.person),
+          onTap: () {
+            widget.viewController.goToView(CurrentView.author);
+            Navigator.of(context).pop();
+          },
         ),
       ],
     ));

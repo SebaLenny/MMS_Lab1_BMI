@@ -39,7 +39,7 @@ class BMITextFormField extends StatelessWidget {
         double parsed = double.tryParse(value);
         if (parsed == null) {
           return strings.emptyError;
-        } else if (parsed <= 0 || parsed > 300) {
+        } else if (parsed <= 39 || parsed > 300) {
           return strings.rangeError;
         }
         return null;

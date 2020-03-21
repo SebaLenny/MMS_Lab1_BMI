@@ -9,16 +9,18 @@ class Strings {
   static String get metric => "Metric";
   static String get imperial => "Imperial";
   static String get appAuthor => "App author";
+  static String get bmiHeadline => "Your BMI is";
+  static String get bmiBottomline => "Click it to find out what does it mean!";
 
   static TextFieldStrings get heightFieldStrings => TextFieldStrings(
         label: "Enter your height",
         emptyError: "Enter height",
-        rangeError: "Enter height between 1 and 300",
+        rangeError: "Enter height between 40 and 300",
       );
   static TextFieldStrings get weightFieldStrings => TextFieldStrings(
         label: "Enter your weight",
         emptyError: "Enter weight",
-        rangeError: "Enter weight between 1 and 300",
+        rangeError: "Enter weight between 40 and 300",
       );
 
   static var unitsMap = {

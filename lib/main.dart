@@ -1,10 +1,13 @@
+import 'package:bmi_app/author_view.dart';
 import 'package:flutter/material.dart';
 
 import 'BMI/bmi_form.dart';
 import 'BMI/bmi_record.dart';
 import 'Unit/unit_controller.dart';
+import 'Utility/current_view.dart';
 import 'menu_drawer.dart';
 import 'result.dart';
+import 'view_controller.dart';
 
 void main() => runApp(BMIApp());
 
@@ -32,9 +35,21 @@ class _MyHomePageState extends State<MyHomePage> {
   UnitController unitController = UnitController();
   BMIRecord bmiRecord;
   Result result = Result();
+  ViewController viewController;
 
   _MyHomePageState() {
     bmiRecord = BMIRecord.unit(unitController: unitController);
+    viewController = ViewController(refresh, CurrentView.form);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        drawer: MenuDrawer(unitController, refresh, viewController),
+        body: _selectView());
   }
 
   void _calculateBMI() {
@@ -46,14 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {});
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      drawer: MenuDrawer(unitController, refresh),
-      body: Column(
+  Widget _selectView() {
+    if (viewController.currentView == CurrentView.form) {
+      return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           BMIForm(
@@ -63,12 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.only(top: 50),
+            margin: EdgeInsets.only(top: 15),
             alignment: Alignment.center,
             child: result,
           ),
         ],
-      ),
-    );
+      );
+    } else if (viewController.currentView == CurrentView.explanation) {
+      return Container();
+    } else if (viewController.currentView == CurrentView.author) {
+      return AuthorView(viewController);
+    }
+    return Container();
   }
 }
