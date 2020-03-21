@@ -1,5 +1,5 @@
-import 'package:bmi_app/helpers.dart';
-import 'package:bmi_app/unit_controller.dart';
+import 'package:bmi_app/Unit/unit_controller.dart';
+import 'package:bmi_app/Utility/helpers.dart';
 
 class BMIRecord {
   double weight;

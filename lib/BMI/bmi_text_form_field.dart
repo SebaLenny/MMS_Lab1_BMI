@@ -1,8 +1,8 @@
-import 'package:bmi_app/bmi_record.dart';
+import 'package:bmi_app/Utility/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'strings.dart';
+import 'bmi_record.dart';
 
 class BMITextFormField extends StatelessWidget {
   final BMIRecord bmiRecord;

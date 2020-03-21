@@ -1,10 +1,10 @@
-import 'package:bmi_app/bmi_form.dart';
-import 'package:bmi_app/bmi_record.dart';
 import 'package:flutter/material.dart';
 
+import 'BMI/bmi_form.dart';
+import 'BMI/bmi_record.dart';
+import 'Unit/unit_controller.dart';
 import 'menu_drawer.dart';
 import 'result.dart';
-import 'unit_controller.dart';
 
 void main() => runApp(BMIApp());
 

@@ -1,9 +1,9 @@
-import 'package:bmi_app/bmi_record.dart';
-import 'package:bmi_app/bmi_text_form_field.dart';
+import 'package:bmi_app/Unit/units.dart';
+import 'package:bmi_app/Utility/strings.dart';
 import 'package:flutter/material.dart';
 
-import 'strings.dart';
-import 'units.dart';
+import 'bmi_record.dart';
+import 'bmi_text_form_field.dart';
 
 class BMIForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -56,7 +56,7 @@ class BMIForm extends StatelessWidget {
                   }
                   FocusScope.of(context).unfocus();
                 },
-                child: Text("Calculate"),
+                child: Text(Strings.calculate),
               ),
             )
           ],

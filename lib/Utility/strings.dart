@@ -1,7 +1,11 @@
-import 'units.dart';
+import 'package:bmi_app/Unit/units.dart';
 
 class Strings {
-  static const String unit_cm = "cm";
+  static String get calculate => "Calculate";
+  static String get units => "Units";
+  static String get metric => "Metric";
+  static String get imperial => "Imperial";
+  static String get appAuthor => "App author";
 
   static TextFieldStrings get heightFieldStrings => TextFieldStrings(
         label: "Enter your height",

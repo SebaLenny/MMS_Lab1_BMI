@@ -1,3 +1,4 @@
+import 'unit_conversion.dart';
 import 'units.dart';
 
 class UnitController {
@@ -16,14 +17,4 @@ class UnitController {
       weight: 0.453,
     )
   };
-}
-
-class UnitConversion {
-  final double height;
-  final double weight;
-
-  const UnitConversion({
-    this.height = 1,
-    this.weight = 1,
-  });
 }

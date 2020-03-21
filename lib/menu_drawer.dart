@@ -1,7 +1,8 @@
-import 'package:bmi_app/unit_controller.dart';
 import 'package:flutter/material.dart';
 
-import 'units.dart';
+import 'Unit/unit_controller.dart';
+import 'Unit/units.dart';
+import 'Utility/strings.dart';
 
 class MenuDrawer extends StatefulWidget {
   UnitController unitController;
@@ -25,11 +26,11 @@ class _MenuDrawerState extends State<MenuDrawer> {
         child: ListView(
       children: <Widget>[
         ExpansionTile(
-          title: Text("Units"),
+          title: Text(Strings.units),
           trailing: Icon(Icons.expand_more),
           children: <Widget>[
             ListTile(
-              title: Text("Metric"),
+              title: Text(Strings.metric),
               trailing: widget.unitController.currentUnit == Units.metric
                   ? Icon(Icons.check)
                   : null,
@@ -39,7 +40,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               },
             ),
             ListTile(
-              title: Text("Imperial"),
+              title: Text(Strings.imperial),
               trailing: widget.unitController.currentUnit == Units.imperial
                   ? Icon(Icons.check)
                   : null,
@@ -51,7 +52,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
           ],
         ),
         ListTile(
-          title: Text("App author"),
+          title: Text(Strings.appAuthor),
           trailing: Icon(Icons.person),
         ),
       ],
