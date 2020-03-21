@@ -12,7 +12,7 @@ class UnitController {
 
   static const unitsConversions = {
     Units.metric: const UnitConversion(),
-    Units.imperial: UnitConversion(
+    Units.imperial: const UnitConversion(
       height: 2.52,
       weight: 0.453,
     )

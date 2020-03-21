@@ -1,13 +1,27 @@
-import 'package:bmi_app/Utility/current_view.dart';
 import 'package:bmi_app/view_controller.dart';
+import 'package:bmi_app/BMI/bmi_record.dart';
 import 'package:flutter/material.dart';
 
+import 'Utility/current_view.dart';
 import 'Utility/strings.dart';
 
-class AuthorView extends StatelessWidget {
-  ViewController _viewController;
+class ExplanationView extends StatelessWidget {
+  final ViewController _viewController;
+  final BMIRecord bmiRecord;
 
-  AuthorView(this._viewController);
+  ExplanationView(this._viewController, this.bmiRecord);
+
+  String _getProperExplanation() {
+    if (bmiRecord.bmi < 18.5) {
+      return Strings.explanationUnderweight;
+    } else if (bmiRecord.bmi < 25) {
+      return Strings.explanationHealthy;
+    } else if (bmiRecord.bmi < 30) {
+      return Strings.explanationOverweight;
+    } else {
+      return Strings.explanationObese;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +35,7 @@ class AuthorView extends StatelessWidget {
             margin: EdgeInsets.only(top: 15),
             alignment: Alignment.center,
             child: Text(
-              Strings.authorAuthor,
+              Strings.explanationTopline,
               style: TextStyle(fontSize: 20),
             ),
           ),
@@ -30,7 +44,7 @@ class AuthorView extends StatelessWidget {
             margin: EdgeInsets.all(5),
             alignment: Alignment.center,
             child: Text(
-              Strings.authorName,
+              bmiRecord.bmi.toString(),
               style: TextStyle(
                 fontSize: 30,
                 color: Colors.blue,
@@ -42,7 +56,16 @@ class AuthorView extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 15),
             alignment: Alignment.center,
             child: Text(
-              Strings.authorStudentID,
+              Strings.explanationBottomline,
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(bottom: 15),
+            alignment: Alignment.center,
+            child: Text(
+              _getProperExplanation(),
               style: TextStyle(fontSize: 20),
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:bmi_app/author_view.dart';
+import 'package:bmi_app/explanation_view.dart';
 import 'package:flutter/material.dart';
 
 import 'BMI/bmi_form.dart';
@@ -34,12 +35,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   UnitController unitController = UnitController();
   BMIRecord bmiRecord;
-  Result result = Result();
+  Result result;
   ViewController viewController;
 
   _MyHomePageState() {
     bmiRecord = BMIRecord.unit(unitController: unitController);
     viewController = ViewController(refresh, CurrentView.form);
+    result = Result(viewController);
   }
 
   @override
@@ -80,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       );
     } else if (viewController.currentView == CurrentView.explanation) {
-      return Container();
+      return ExplanationView(viewController, bmiRecord);
     } else if (viewController.currentView == CurrentView.author) {
       return AuthorView(viewController);
     }

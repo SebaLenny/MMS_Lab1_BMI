@@ -1,9 +1,14 @@
+import 'package:bmi_app/Utility/current_view.dart';
+import 'package:bmi_app/view_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'Utility/strings.dart';
 
 class Result extends StatefulWidget {
   _ResultState _resultState;
+  ViewController _viewController;
+
+  Result(this._viewController);
 
   updateResult(int newResult) {
     print("new result: $newResult");
@@ -48,37 +53,42 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return animation.value.floor() != 0
-        ? Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(bottom: 15),
-                child: Text(
-                  Strings.bmiHeadline,
-                  style: TextStyle(fontSize: 40, color: Colors.blue),
+        ? GestureDetector(
+            onTap: () {
+              widget._viewController.goToView(CurrentView.explanation);
+            },
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(bottom: 15),
+                  child: Text(
+                    Strings.bmiHeadline,
+                    style: TextStyle(fontSize: 40, color: Colors.blue),
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
+                Container(
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text(
+                    animation.value.floor().toString(),
+                    style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontSize: 80,
+                        color: Colors.white),
+                  ),
                 ),
-                child: Text(
-                  animation.value.floor().toString(),
-                  style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontSize: 80,
-                      color: Colors.white),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 15),
-                child: Text(
-                  Strings.bmiBottomline,
-                  style: TextStyle(fontSize: 20, color: Colors.blue),
-                ),
-              )
-            ],
+                Container(
+                  margin: EdgeInsets.only(top: 15),
+                  child: Text(
+                    Strings.bmiBottomline,
+                    style: TextStyle(fontSize: 20, color: Colors.blue),
+                  ),
+                )
+              ],
+            ),
           )
         : Container();
   }
