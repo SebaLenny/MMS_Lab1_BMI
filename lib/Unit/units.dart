@@ -1,4 +1,4 @@
-enum Units{
+enum Units {
   metric,
-  imperial
+  imperial,
 }

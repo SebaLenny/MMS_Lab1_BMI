@@ -12,8 +12,10 @@ class BMIRecord {
 
   int get bmi {
     if (height != null && weight != null) {
-      final convertedHeight = Helpers.toMeter(height * unitController.currentUnitConversion.height);
-      final convertedWeight = weight * unitController.currentUnitConversion.weight;
+      final convertedHeight =
+          Helpers.toMeter(height * unitController.currentUnitConversion.height);
+      final convertedWeight =
+          weight * unitController.currentUnitConversion.weight;
       return (convertedWeight / (convertedHeight * convertedHeight)).floor();
     } else {
       return null;

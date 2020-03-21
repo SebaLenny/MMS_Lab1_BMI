@@ -1,4 +1,4 @@
-import 'package:bmi_app/Utility/strings.dart';
+import 'package:bmi_app/Utility/text_field_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -44,7 +44,7 @@ class BMITextFormField extends StatelessWidget {
         }
         return null;
       },
-      initialValue: initValue != null ?  initValue.floor().toString() : '',
+      initialValue: initValue != null ? initValue.floor().toString() : '',
     );
   }
 }

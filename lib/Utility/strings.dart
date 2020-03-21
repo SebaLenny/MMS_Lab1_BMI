@@ -1,5 +1,8 @@
 import 'package:bmi_app/Unit/units.dart';
 
+import 'text_field_strings.dart';
+import 'units_strings.dart';
+
 class Strings {
   static String get calculate => "Calculate";
   static String get units => "Units";
@@ -28,26 +31,4 @@ class Strings {
       weight: "lbs",
     )
   };
-}
-
-class TextFieldStrings {
-  final String label;
-  final String emptyError;
-  final String rangeError;
-
-  TextFieldStrings({
-    this.label,
-    this.emptyError,
-    this.rangeError,
-  });
-}
-
-class UnitsStrings {
-  final String height;
-  final String weight;
-
-  UnitsStrings({
-    this.height,
-    this.weight,
-  });
 }
