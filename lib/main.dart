@@ -2,7 +2,9 @@ import 'package:bmi_app/bmi_form.dart';
 import 'package:bmi_app/bmi_record.dart';
 import 'package:flutter/material.dart';
 
-import 'units.dart';
+import 'menu_drawer.dart';
+import 'result.dart';
+import 'unit_controller.dart';
 
 void main() => runApp(BMIApp());
 
@@ -27,10 +29,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  BMIRecord bmiRecord = BMIRecord();
-  Units units = Units.metric;
+  UnitController unitController = UnitController();
+  BMIRecord bmiRecord;
+  Result result = Result();
+
+  _MyHomePageState() {
+    bmiRecord = BMIRecord.unit(unitController: unitController);
+  }
 
   void _calculateBMI() {
+    result.updateResult(bmiRecord.bmi);
+    refresh();
+  }
+
+  void refresh() {
     setState(() {});
   }
 
@@ -40,19 +52,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      drawer: MenuDrawer(unitController, refresh),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           BMIForm(
             bmiRecord: bmiRecord,
             calculateBMI: _calculateBMI,
-            units: units,
+            units: unitController.currentUnit,
           ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.only(top: 50),
             alignment: Alignment.center,
-            child: Text(bmiRecord.bmi.toString()),
+            child: result,
           ),
         ],
       ),

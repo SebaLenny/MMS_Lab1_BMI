@@ -21,7 +21,7 @@ class Strings {
     ),
     Units.imperial: UnitsStrings(
       height: "in",
-      weight: "oz",
+      weight: "lbs",
     )
   };
 }
