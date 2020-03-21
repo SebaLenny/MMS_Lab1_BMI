@@ -1,3 +1,4 @@
+import 'package:bmi_app/Utility/dimens.dart';
 import 'package:bmi_app/author_view.dart';
 import 'package:bmi_app/explanation_view.dart';
 import 'package:flutter/material.dart';
@@ -75,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.only(top: 15),
+            margin: EdgeInsets.only(top: Dimens.standardDistance),
             alignment: Alignment.center,
             child: result,
           ),

@@ -1,4 +1,5 @@
 import 'package:bmi_app/Unit/units.dart';
+import 'package:bmi_app/Utility/dimens.dart';
 import 'package:bmi_app/Utility/strings.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class BMIForm extends StatelessWidget {
     return Form(
       key: _formKey,
       child: Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(Dimens.standardDistance),
         child: Column(
           children: <Widget>[
             BMITextFormField(
@@ -46,7 +47,7 @@ class BMIForm extends StatelessWidget {
               initValue: bmiRecord.weight,
             ),
             Container(
-              padding: EdgeInsets.only(top: 15),
+              padding: EdgeInsets.only(top: Dimens.standardDistance),
               width: double.infinity,
               child: RaisedButton(
                 onPressed: () {

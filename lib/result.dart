@@ -1,4 +1,5 @@
 import 'package:bmi_app/Utility/current_view.dart';
+import 'package:bmi_app/Utility/dimens.dart';
 import 'package:bmi_app/view_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -60,14 +61,14 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
             child: Column(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(bottom: 15),
+                  margin: EdgeInsets.only(bottom: Dimens.standardDistance),
                   child: Text(
                     Strings.bmiHeadline,
-                    style: TextStyle(fontSize: 40, color: Colors.blue),
+                    style: TextStyle(fontSize: Dimens.fontHeader, color: Colors.blue),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(Dimens.standardDistance),
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     shape: BoxShape.circle,
@@ -76,15 +77,15 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
                     animation.value.floor().toString(),
                     style: TextStyle(
                         fontStyle: FontStyle.italic,
-                        fontSize: 80,
+                        fontSize: Dimens.fontHuge,
                         color: Colors.white),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 15),
+                  margin: EdgeInsets.only(top: Dimens.standardDistance),
                   child: Text(
                     Strings.bmiBottomline,
-                    style: TextStyle(fontSize: 20, color: Colors.blue),
+                    style: TextStyle(fontSize: Dimens.fontSecodnary, color: Colors.blue),
                   ),
                 )
               ],
