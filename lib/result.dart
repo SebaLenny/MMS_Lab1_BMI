@@ -12,7 +12,6 @@ class Result extends StatefulWidget {
   Result(this._viewController);
 
   updateResult(int newResult) {
-    print("new result: $newResult");
     _resultState.updateResult(newResult);
   }
 
@@ -64,7 +63,8 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
                   margin: EdgeInsets.only(bottom: Dimens.standardDistance),
                   child: Text(
                     Strings.bmiHeadline,
-                    style: TextStyle(fontSize: Dimens.fontHeader, color: Colors.blue),
+                    style: TextStyle(
+                        fontSize: Dimens.fontHeader, color: Colors.blue),
                   ),
                 ),
                 Container(
@@ -85,7 +85,8 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
                   margin: EdgeInsets.only(top: Dimens.standardDistance),
                   child: Text(
                     Strings.bmiBottomline,
-                    style: TextStyle(fontSize: Dimens.fontSecodnary, color: Colors.blue),
+                    style: TextStyle(
+                        fontSize: Dimens.fontSecodnary, color: Colors.blue),
                   ),
                 )
               ],
@@ -100,9 +101,7 @@ class _ResultState extends State<Result> with SingleTickerProviderStateMixin {
       end: _resut.toDouble(),
     ).animate(_curvedAnimation)
       ..addListener(() {
-        setState(() {
-          print(animation.value);
-        });
+        setState(() {});
       });
   }
 
